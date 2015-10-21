@@ -111,17 +111,18 @@ web. npm v3 is at the time of writing still in a late beta, but it
 should eventually ship by default with node v5. You can check the
 version of your npm installation using this command:
 
-    $ npm --version
+```ShellSession
+$ npm --version
+v3.3.8
+```
 
-At the time of writing I use this version:
-
-    v3.3.8
-
-If you have npm v2 and you want to upgrade it to npm v2, or you just
+If you have npm v2 and you want to upgrade it to npm v3, or you just
 want to upgrade npm to the latest version anyway, you can use this
 command:
 
-    $ npm install npm@latest -g
+```ShellSession
+$ npm install npm@latest -g
+```
 
 Using npm to install project dependencies
 -----------------------------------------
@@ -140,7 +141,9 @@ in a known-working state. You install a project's dependencies using
 the `npm install` command. Try it in `bundle_example` project
 directory:
 
-    $ npm install
+```ShellSession
+$ npm install
+```
 
 The installed dependencies end up in `node_modules`. We shouldn't
 check this into our version control system. Since we use git, we've
@@ -149,8 +152,10 @@ included a `.gitignore` that makes git ignore it.
 Our `package.json` includes some dependencies already, which we've
 now installed:
 
-    "bootstrap": "^3.3.5",
-    "jquery": "^2.1.4"
+```JSON
+"bootstrap": "^3.3.5",
+"jquery": "^2.1.4"
+```
 
 We've picked two popular libraries, but that's just an example, not a
 recommendation. The registry at http://www.npmjs.com contains
