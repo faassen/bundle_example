@@ -5,13 +5,19 @@ Introduction
 ------------
 
 This project is an example of how you can bundle JavaScript code ready
-for the web. We'll also detail some useful tools you can use along the
-way.
+for the web. I will also detail some useful tools you can use along
+the way.
 
-A lot of other examples exist. Many examples use a tool like grunt or
-gulp and quite a bit of custom JavaScript. We aim to avoid this. We
-want power but stay minimalistic as possible and aim for declarative
-configuration.
+A lot of other JavaScript project examples exist. Most them contain
+quite a bit of code and relatively little text. This example is the
+other way around: a little bit of code and a lot of text in the README
+to explain what is going on. I can't explain everything, but hopefully
+enough to get you started.
+
+Many examples also use a tool like grunt or gulp and quite a bit of
+custom JavaScript. I aimed to avoid this. While we want to use
+powerful tools we also want their configuration to be as small and
+declarative as possible.
 
 So to get started, clone this Github repo and follow along.
 
@@ -64,8 +70,8 @@ happen if you loaded modules individually. It gets very slow fast, at
 least until HTTP2 is widely deployed. It's much faster to load one or
 a few large files.
 
-That's we use tools to bundle modules into larger files we can then
-easily include on a web page using a `<script>` tag: bundles.
+That's why we use tools to bundle modules into larger bundle files we
+can then easily include on a web page using a `<script>` tag.
 
 Node
 ----
@@ -101,7 +107,8 @@ You install tools globally by passing the `-g` option to npm. We'll
 see an example of that later. Your operating system may however not
 let you install this stuff unless you're the superuser, which is not
 very nice. If you're in that situation, I recommend you configure
-`npm` so that it installs global packages [in a directory under your home
+`npm` so that it installs global packages [in a directory under your
+home
 directory](https://docs.npmjs.com/getting-started/fixing-npm-permissions#option-2-change-npm-s-default-directory-to-another-directory)
 first.
 
@@ -552,7 +559,7 @@ Here is how to install it:
 $ npm install -g eslint
 ```
 
-Here is the version I have installed:
+Here is the version I have installed at the time of writing:
 
 ```ShellSession
 $ eslint --version
@@ -561,7 +568,7 @@ v1.7.2
 
 The version is somewhat important: older versions of eslint have a
 variety of linting rules enabled by default, but newer versions do not
-do this anymore. Instead you need to use `extends`, as we describe later.
+do this anymore. Instead you need to use `extends`, as we'll see later.
 
 To get eslint to deal with any syntax Babel supports we also need to
 install the [babel-eslint](https://github.com/babel/babel-eslint)
@@ -618,12 +625,12 @@ package.  Note that to use it with a global eslint, you need to
 install it with the `-g` option as well.
 
 Some guides recommend you install eslint and configurations locally
-into a project (without `-g` and using `--save-dev`). We chose not to
-do so here, as it makes it harder to use eslint from the command line
-and makes editor and IDE integration more complex. On the other hand,
-a locally installed eslint has the benefit that everyone gets the
-versions of the tools automatically you need in a particular project,
-as you can specify them exactly in `package.json`.
+into a project (without `-g` and using `--save-dev`). I chose not to
+do that here, as it makes it harder to use eslint from the command
+line and makes editor and IDE integration more complex. On the other
+hand, a locally installed eslint has the benefit that everyone gets
+the versions of the tools automatically you need in a particular
+project, as you can specify them exactly in `package.json`.
 
 To use a locally installed eslint you must write the following on the
 command line from the project directory:
