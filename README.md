@@ -486,6 +486,7 @@ module: {
     ...
   ]
 }
+```
 
 The first loader declares that for files that end with `.js` we want
 to use the `babel-loader`. We also say that we *only* want to use
