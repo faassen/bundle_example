@@ -185,7 +185,9 @@ A global installation of babel is not strictly necessary to run this
 example, but it's useful to have in any case so we're going to do it
 anyway:
 
-    $ npm install -g babel
+```ShellSession
+$ npm install -g babel
+```
 
 You now have some new command-line tools available. `babel` is a tool
 that lets you compile ES6 code manually: it takes in ES6 JavaScript
@@ -197,21 +199,27 @@ Babel actually does.
 replacement for the `node` command-line to run scripts that use ES6
 features:
 
-    $ babel-node myscript.js
+```ShellSession
+$ babel-node myscript.js
+```
 
 You can also try out ES6 features on the command prompt. Here we use
 arrow (`=>`) functions:
 
-    $ babel-node
-    > (a => a + a)(3)
-    6
+```ShellSession
+$ babel-node
+> (a => a + a)(3)
+6
+```
 
 Babel can be configured using the `.babelrc` configuration file in your
 project. Ours is very simple:
 
-    {
-      "stage": 2
-    }
+```JSON
+{
+  "stage": 2
+}
+```
 
 We could in fact entirely omit it, as stage 2 is the default for
 Babel.  This enables ES6 and a [few well-established draft
@@ -226,7 +234,9 @@ Getting Started with Bundling
 Now we need to install a bundling tool. We use
 [Webpack](https://webpack.github.io/):
 
-    $ npm install -g webpack
+```ShellSession
+$ npm install -g webpack
+```
 
 Besides this Webpack *also* needs to be installed for your project as
 a development dependency -- the Webpack configuration files needs to
@@ -236,29 +246,35 @@ install`.
 
 Before we go into the details of how things work, let's try Webpack out:
 
-    $ webpack
+```ShellSession
+$ webpack
+```
 
 This creates a `bundle.js` file and places it in the `public`
 directory. The `public` directory contains a simple HTML file that
 loads the bundle. It looks like this:
 
-    <!doctype html>
-    <html lang="en">
-      <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Bundle Example</title>
-      </head>
-      <body>
-        <div id="root"></div>
-        <script src="bundle.js"></script>
-      </body>
-    </html>
+```HTML
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bundle Example</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="bundle.js"></script>
+  </body>
+</html>
+```
 
 You can serve the contents of `public` with any web server. For example,
 you can use Python's built-in web server:
 
-    $ python -m SimpleHTTPServer
+```ShellSession
+$ python -m SimpleHTTPServer
+```
 
 But let's not do that and move on to `webpack-dev-server`.
 
@@ -270,11 +286,15 @@ The most convenient server for development purposes is
 https://webpack.github.io/docs/webpack-dev-server.html). Let's show
 what it can do. First we need to install it:
 
-    $ npm install -g webpack-dev-server
+```ShellSession
+$ npm install -g webpack-dev-server
+```
 
 Now we can use it. From the project directory, run the following command:
 
-    $ webpack-dev-server --inline --content-base public/
+```ShellSession
+$ webpack-dev-server --inline --content-base public/
+```
 
 You can now to go [http://localhost:8080](http://localhost:8080). You
 should see an "Ok" checkmark image in a button that doesn't do
@@ -302,14 +322,15 @@ are two files: `index.js` and `a.js`.
 
 `a.js` reads like this:
 
-    import $ from 'jquery';
+```javascript
+import $ from 'jquery';
 
-    export function addButton(el) {
-      el.append($(`<button type="button" class="btn btn-default">
-                    <span class="glyphicon glyphicon-ok-sign"></span>
-                  </button>`));
-    }
-
+export function addButton(el) {
+  el.append($(`<button type="button" class="btn btn-default">
+                 <span class="glyphicon glyphicon-ok-sign"></span>
+               </button>`));
+}
+```
 
 This imports `$` from `jquery` using ES6. We then define a function
 `addButton`. Using the `export` statement we make it available for
