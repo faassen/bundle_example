@@ -21,6 +21,13 @@ declarative as possible.
 
 So to get started, clone this Github repo and follow along.
 
+Credits
+-------
+
+This text and example project was created by Martijn Faassen, inspired
+by many project examples I've seen over time. I am very grateful to Timo
+Stollenwerk who asked me to put it all together.
+
 Why bundling?
 -------------
 
@@ -653,4 +660,3 @@ $ npm lint myfile.js
 
 to do linting. It looks for a locally installed `eslint` but barring
 that uses the global one.
-
