@@ -405,6 +405,7 @@ in `package.json`. We've done this already so they are already installed:
   "url-loader": "^0.5.6",
   "webpack": "^1.12.2"
 }
+```
 
 Let's go through these:
 
