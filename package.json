@@ -1,0 +1,21 @@
+{
+  "name": "bundle_example",
+  "version": "1.0.0",
+  "description": "An example of how to use npm and webpack to bundle",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "bundle",
+    "bundling",
+    "webpack",
+    "npm"
+  ],
+  "author": "Martijn Faassen",
+  "license": "MIT",
+  "devDependencies": {
+  },
+  "dependencies": {}
+}
