@@ -341,13 +341,15 @@ uses Bootstrap 3 classes to show a checkmark glyph icon.
 
 Now we move on to `index.js`:
 
-    import $ from 'jquery';
-    import 'bootstrap/dist/css/bootstrap.min.css';
-    import {addButton} from './a.js';
+```javascript
+import $ from 'jquery';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {addButton} from './a.js';
 
-    $(document).ready(() => {
-      addButton($('#root'));
-    });
+$(document).ready(() => {
+  addButton($('#root'));
+});
+```
 
 Here we see three import statements. First we import `$` again from
 `jquery` as we use it in this module. Then we import some Bootstrap CSS
@@ -394,14 +396,15 @@ Webpack needs various loaders to understand how to include files of
 particular types. These need to be installed as part of our `devDependencies`
 in `package.json`. We've done this already so they are already installed:
 
-    "devDependencies": {
-      "babel-loader": "^5.3.2",
-      "css-loader": "^0.21.0",
-      "file-loader": "^0.8.4",
-      "style-loader": "^0.13.0",
-      "url-loader": "^0.5.6",
-      "webpack": "^1.12.2"
-    }
+```JSON
+"devDependencies": {
+  "babel-loader": "^5.3.2",
+  "css-loader": "^0.21.0",
+  "file-loader": "^0.8.4",
+  "style-loader": "^0.13.0",
+  "url-loader": "^0.5.6",
+  "webpack": "^1.12.2"
+}
 
 Let's go through these:
 
@@ -422,8 +425,10 @@ Webpack is driven by a configuration file in `webpack.conf.js`. This
 file is written in JavaScript, but not in ES6 format, so beware! Let's
 take a look how it starts:
 
-    var path = require('path');
-    var webpack = require('webpack');
+```javascript
+var path = require('path');
+var webpack = require('webpack');
+```
 
 We import `path`, a path manipulation utility module, and `webpack`.
 
@@ -436,13 +441,17 @@ here as we cannot use `ES6`.
 Next we get a `module.exports` structure which contains the
 declarative Webpack configuration:
 
-    module.exports = {
-      ...
-    }
+```javascript
+module.exports = {
+  ...
+}
+```
 
 The first bit describes the entry point:
 
-    entry: './src/index.js',
+```javascript
+entry: './src/index.js',
+```
 
 Here `./src/index.js` is the file that Webpack should look at first
 when bundling. Webpack includes the content of the file to the
@@ -451,10 +460,12 @@ on recursively.
 
 Then we describe where to output the bundle:
 
-    output: {
-      path: path.join(__dirname, 'public'),
-      filename: 'bundle.js'
-    },
+```javascript
+output: {
+  path: path.join(__dirname, 'public'),
+  filename: 'bundle.js'
+},
+```
 
 We tell Webpack we want the bundle in the `public` subdirectory. We
 use a bit of path manipulation here to create the right path to the
@@ -464,15 +475,16 @@ want the bundle to be called `bundle.js`.
 Now we set up loaders. I'm not going to show them all here, but we look
 at the first three:
 
-  module: {
-    loaders: [
-      { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
-      { test: /\.css$/, loader: "style-loader!css-loader" },
-      // inline base64 URLs for <=8k images, direct URLs for the rest
-      { test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192'},
-      ...
-    ]
-  }
+```javascript
+module: {
+  loaders: [
+    { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
+    { test: /\.css$/, loader: "style-loader!css-loader" },
+    // inline base64 URLs for <=8k images, direct URLs for the rest
+    { test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192'},
+    ...
+  ]
+}
 
 The first loader declares that for files that end with `.js` we want
 to use the `babel-loader`. We also say that we *only* want to use
@@ -492,11 +504,13 @@ The third declaration states that for files that end with `.png` or
 `.jpg` we want to be able to import them as well. This allows
 constructions like this:
 
-    import myImage from './myImage.jpg';
+```javascript
+import myImage from './myImage.jpg';
 
-    ...
+...
 
-    $('#foo').append($(`<img src="${ myImage }" />`));
+$('#foo').append($(`<img src="${ myImage }" />`));
+```
 
 The `import` statement causes `myImage` to contain a URL to the image
 which we can then use. The `url-loader` will create links to embedded
@@ -507,7 +521,9 @@ font formats that the Bootstrap CSS uses.
 
 Finally we set a `devtool` option:
 
-    devtool: 'source-map',
+```javascript
+devtool: 'source-map',
+```
 
 We do this to make Webpack produce a source map. The source map is
 used by the browser devtools to show the original ES6 source code even
@@ -530,12 +546,16 @@ ES6 JavaScript.
 
 Here is how to install it:
 
-    $ npm install -g eslint
+```ShellSession
+$ npm install -g eslint
+```
 
-The version I use during writing is this one:
+Here is the version I have installed:
 
-    $ eslint --version
-    v1.7.2
+```ShellSession
+$ eslint --version
+v1.7.2
+```
 
 The version is somewhat important: older versions of eslint have a
 variety of linting rules enabled by default, but newer versions do not
@@ -545,20 +565,26 @@ To get eslint to deal with any syntax Babel supports we also need to
 install the [babel-eslint](https://github.com/babel/babel-eslint)
 parser:
 
-    $ npm install -g babel-eslint
+```ShellSession
+$ npm install -g babel-eslint
+```
 
 eslints allows a lot of different configurations. We've picked the
 popular [airbnb styleguide](https://github.com/airbnb/javascript)
 style guide. We install the eslint rules:
 
-    $ npm install -g eslint-config-airbnb
+```ShellSession
+$ npm install -g eslint-config-airbnb
+```
 
 Now we're ready to use the airbnb rules in our eslint configuration,
 in `.eslintrc` in our project directory:
 
-    {
-      "extends": "airbnb/base"
-    }
+```JSON
+{
+  "extends": "airbnb/base"
+}
+```
 
 Here we say we want to use the eslint configuration rules from the
 base airbnb style guide. We use `"airbnb/base"` instead of `"airbnb"`
@@ -570,12 +596,14 @@ need to configure it manually.
 We can deviate from the airbnb style guide and change [an eslint
 rule](http://eslint.org/docs/rules/):
 
-    {
-      "extends": "airbnb/base",
-      "rules": {
-        "id-length": 0
-      }
-    }
+```JSON
+{
+  "extends": "airbnb/base",
+    "rules": {
+      "id-length": 0
+   }
+}
+```
 
 This allows us to use variable identifiers of 1 character, such as
 `i`, something that the airbnb rules forbid. Do what is appropriate
@@ -598,15 +626,21 @@ as you can specify them exactly in `package.json`.
 To use a locally installed eslint you must write the following on the
 command line from the project directory:
 
-    $ ./node_modules/./bin/eslint
+```ShellSession
+$ ./node_modules/./bin/eslint
+```
 
 You can also add the following to `package.json` under `"scripts"`:
 
-    "lint": "eslint"
+```JSON
+"lint": "eslint"
+```
 
 If you do this, you can type this:
 
-    $ npm lint myfile.js
+```ShellSession
+$ npm lint myfile.js
+```
 
 to do linting. It looks for a locally installed `eslint` but barring
 that uses the global one.
