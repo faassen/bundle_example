@@ -80,8 +80,10 @@ written using Node, so we're going to need it.
 
 The Node version I use at the time of writing is:
 
-    $ node --version
-    v4.2.1
+```shell
+$ node --version
+v4.2.1
+```
 
 npm
 ---
