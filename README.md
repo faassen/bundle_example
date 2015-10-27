@@ -25,8 +25,9 @@ Credits
 -------
 
 This text and example project was created by Martijn Faassen, inspired
-by many project examples I've seen over time. I am very grateful to Timo
-Stollenwerk who asked me to put it all together.
+by many project examples I've seen over time. I am very grateful to
+Timo Stollenwerk who asked me to put an example together. I then went
+overboard on writing it up!
 
 Why bundling?
 -------------
