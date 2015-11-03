@@ -207,7 +207,7 @@ $ npm install -g babel
 You now have some new command-line tools available. `babel` is a tool
 that lets you compile ES6 code manually: it takes in ES6 JavaScript
 and outputs compatible JavaScript. We're going to automate Babel so
-won't be using this tool, but you can use it if you're curious about 
+we won't be using this tool, but you can use it if you're curious about
 what Babel actually does.
 
 `babel-node` is more useful for our purposes. It can be used as a
