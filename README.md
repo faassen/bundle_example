@@ -193,8 +193,8 @@ use a compiler like Babel to use these features already.
 
 Besides ES6, Babel also supports experimental features that may end up
 in an even newer version of JavaScript eventually. We won't worry
-about them here. In additionan Babel supports compiler extensions that
-lets framework developers extend the JavaScript language even further.
+about them here. In addition Babel supports compiler extensions that
+let framework developers extend the JavaScript language even further.
 
 A global installation of babel is not strictly necessary to run this
 example, but it's useful to have in any case so we're going to do it
@@ -207,8 +207,8 @@ $ npm install -g babel
 You now have some new command-line tools available. `babel` is a tool
 that lets you compile ES6 code manually: it takes in ES6 JavaScript
 and outputs compatible JavaScript. We're going to automate Babel so
-won't be using this tool, but you can use if you're curious about what
-Babel actually does.
+won't be using this tool, but you can use it if you're curious about 
+what Babel actually does.
 
 `babel-node` is more useful for our purposes. It can be used as a
 replacement for the `node` command-line to run scripts that use ES6
@@ -376,7 +376,7 @@ Note that the curly brace (`{}`) syntax lets us import individual
 names from a module, whereas without curly braces we import the object
 the module exports entirely; we do this with `$` from `jquery`. You
 need to know how the module exports things to do the right thing, and
-this is a bit of a pitfall, as if the import fails it just returns
+this is a bit of a pitfall, as, if the import fails, it just returns
 `undefined` instead. Try putting in a `console.log(foo)` in the
 top-level code if you expect something went wrong with the import of
 `foo`.
